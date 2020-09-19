@@ -7,7 +7,6 @@
 public class ArrayStack implements Stack
 {
 	Object[] temp;
-	Object oldest = new Object();
 	public ArrayStack(){
 		temp = new Object[0];
 	}
@@ -22,8 +21,9 @@ public class ArrayStack implements Stack
 	}
 
 	public Object pop(){
+		try{
 		if(temp.length == 0){
-			//throw a StackException
+			throw new StackException("Stack Is Already Empty...");
 		}
 		Object temp1 = new Object();
 		temp1 = temp[temp.length - 1];
@@ -34,14 +34,25 @@ public class ArrayStack implements Stack
 		temp = temp0;
 
 		return temp1;
+
+		} catch(StackException e){
+			System.out.println(e);
+		}
+		return null;
 		
 	}
 
 	public Object peekTop(){
+		try{
 		if(temp.length == 0){
-			//throw a StackException
+			throw new StackException("Stack Is Already Empty...");
 		}
 		return temp[temp.length - 1];
+
+		}catch(StackException e){
+			System.out.println(e);
+		}
+		return null;
 	}
 
 	public boolean isEmpty(){
