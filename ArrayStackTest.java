@@ -11,7 +11,6 @@ import java.util.*;
 public class ArrayStackTest {
 	public static void main(String args[]) {
 		ArrayStackTest test = new ArrayStackTest();
-		test.test_example();
 		test.test_stack();
 	}
 
