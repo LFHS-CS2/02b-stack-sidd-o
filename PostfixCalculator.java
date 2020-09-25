@@ -10,6 +10,7 @@ import java.io.*;
 class PostfixCalculator {
 	private String expression = "";
 	private int last_ans = 0;
+	// All Supported Operations Should Be Added in the Following Array as To Allow For Proper Expression Checking
 	private final char[] SUPPORTED_OPERATIONS = {'+', '-', '*', '/', '^'};
 
 	public PostfixCalculator() {
@@ -219,11 +220,12 @@ class PostfixCalculator {
 	private boolean isValidExpression(String str) {
 		for (int i = 0; i < str.length(); i++) {
 			char temp_char = str.charAt(i);
+			//An Acceptable Character Will Make the Temp Boolean True
 			boolean temp_char_ans = false;
 			if (Character.isDigit(temp_char) || Character.isWhitespace(temp_char)){
 				temp_char_ans = true;
 			}
-			for(int j = 0; j < SUPPORTED_OPERATIONS.length; i++){
+			for(int j = 0; j < SUPPORTED_OPERATIONS.length; j++){
 				if(SUPPORTED_OPERATIONS[j] == temp_char){
 				temp_char_ans = true;
 				}
