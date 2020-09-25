@@ -68,7 +68,6 @@ public class PostfixCalculatorTest {
 
 		try {
 			for (int i = 0; i < postfix_test_expressions.length; i++) {
-				System.out.println("the expression " + postfix_test_expressions[i] + " should yield " + postfix_test_expressions_answers[i]);
 				assertEquals(
 						("the expression " + postfix_test_expressions[i] + " should yield " + postfix_test_expressions_answers[i]),
 						temp.evaluate(postfix_test_expressions[i]), postfix_test_expressions_answers[i]);
