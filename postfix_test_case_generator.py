@@ -13,6 +13,9 @@ results = []
 #Number of Desired Test Cases
 test_case_count = 50;
 
+#Highest Randomly Generated Int Desired
+random_int_max = 100;
+
 
 # Python program to evaluate value of a postfix  
 # expression with integers containing multiple digits
@@ -90,7 +93,7 @@ def expression_creator():
 
     while(index < length):
         if(index < 2):
-            random_int = random.randint(1, 10)
+            random_int = random.randint(1, random_int_max)
             expression.append(random_int)
             expression_str = expression_str + str(random_int) + " "
             int_balance = int_balance + 1
@@ -104,7 +107,7 @@ def expression_creator():
                 operation_counter = operation_counter + 1
                 int_balance = int_balance - 1
             else:
-                random_int = random.randint(1, 10)
+                random_int = random.randint(1, random_int_max)
                 expression.append(random_int)
                 expression_str = expression_str + str(random_int) + " "
                 int_balance = int_balance + 1
