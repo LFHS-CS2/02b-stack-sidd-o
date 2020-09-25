@@ -1,6 +1,6 @@
 /**
 *
-* Handles Calling Test Programs
+* Handles Calling Unit Test Programs
 *
 */
 import java.util.*;
