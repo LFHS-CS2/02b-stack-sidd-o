@@ -10,6 +10,7 @@ import java.io.*;
 class PostfixCalculator {
 	private String expression = "";
 	private int last_ans = 0;
+	private final char[] SUPPORTED_OPERATIONS = {'+', '-', '*', '/', '^'};
 
 	public PostfixCalculator() {
 
@@ -217,8 +218,19 @@ class PostfixCalculator {
 
 	private boolean isValidExpression(String str) {
 		for (int i = 0; i < str.length(); i++) {
-			if (!(Character.isDigit(str.charAt(i)) || Character.isWhitespace(str.charAt(i)) || str.charAt(i) == '+'
-					|| str.charAt(i) == '-' || str.charAt(i) == '*' || str.charAt(i) == '/' || str.charAt(i) == '^')) {
+			char temp_char = str.charAt(i);
+			boolean temp_char_ans = false;
+			if (Character.isDigit(temp_char) || Character.isWhitespace(temp_char)){
+				temp_char_ans = true;
+			}
+			for(int j = 0; j < SUPPORTED_OPERATIONS.length; i++){
+				if(SUPPORTED_OPERATIONS[j] == temp_char){
+				temp_char_ans = true;
+				}
+				
+			}
+			
+			if(!temp_char_ans){
 				return false;
 			}
 		}
