@@ -31,21 +31,21 @@ class PostfixCalculator {
 		int answer = 0;
 		ArrayStack main_stack = new ArrayStack();
 		if (!isValidExpression(str)) {
-			throw new PostfixError("Expression Not Valid!");
+			throw new PostfixError(str);
 		}
 		ArrayStack temp_stack = getExpressionStackForm(str);
 		while (!temp_stack.isEmpty()) {
 			String item = (String) temp_stack.pop();
 			if (item == null) {
-				throw new PostfixError("Oops!");
+				//Safety First
+				throw new PostfixError(str);
 			}
 			// Check If It Is An Int
-			// Single Digit Case
 			if (item.length() > 0 && isInt(item)) {
 				main_stack.push(Integer.parseInt(item));
 			} else if (getArrayStackLength(main_stack) < 2) {
 				// Throw a PostfixError as all operations require >= 2 integers to complete
-				throw new PostfixError("Invalid Expression!");
+				throw new PostfixError(str);
 			} else if (item.length() == 1 && item.charAt(0) == '+') {
 				// Add the Top Two Integers in the Main ArrayStack
 				int num2 = (Integer) main_stack.pop();
@@ -73,7 +73,7 @@ class PostfixCalculator {
 				int num1 = (Integer) main_stack.pop();
 				main_stack.push((int) Math.pow(num1, num2));
 			} else {
-				throw new PostfixError("Invalid Expression!");
+				throw new PostfixError(str);
 			}
 
 			// Add Support for Additional Operations Here With Additional else if statments
@@ -89,7 +89,7 @@ class PostfixCalculator {
 		} else {
 			// Throw a PostfixError As There Are Incorrectly Located Integers Without
 			// Operations
-			throw new PostfixError("Invalid Expression!");
+			throw new PostfixError(str);
 		}
 
 	}
