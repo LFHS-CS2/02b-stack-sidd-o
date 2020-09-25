@@ -8,3 +8,4 @@ class StackException extends Exception {
 		super(e);
 	}
 }
+
