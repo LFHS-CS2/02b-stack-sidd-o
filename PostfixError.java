@@ -5,6 +5,6 @@
  */
 public class PostfixError extends Exception {
 	public PostfixError(String e) {
-		super(e);
+		super("Invalid Expression! : " + e);
 	}
 }
