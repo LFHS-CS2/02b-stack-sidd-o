@@ -1,6 +1,22 @@
-#--------This Is NOT All My Code (Some Found Online to Check Calculations)-----
+import random
+
+
+
+#Python Script Used to Generate a Test Data Set. Since, Some of the Methods in the Class Were Not My Work, There Are Comments About Which Parts Are and Which Are to Be Transparent. Script Can Be Run By Typing "python postfix_test_case_generator.py" Into the Terminal
+
+#NOTE ABOUT TEST DATASET: Even though both of the methods used to evaluated the generated postfix expressions were sourced from two seperate internet source, use integer match, and are cross-checked with each other, there would occasionally be a case that would fail the test program, requiring a manual calculation to verify the correct result, which would always require changing the expected answer in the data set. Nonetheless, this script was extremely useful is generating usable expressions and correctly evaluating most of them.
+
+#Lists Used for Local Storage
+expression_strings = []
+results = []
+
+#Number of Desired Test Cases
+test_case_count = 50;
+
+
 # Python program to evaluate value of a postfix  
-# expression with integers containing multiple digits 
+# expression with integers containing multiple digits
+#THIS METHOD WAS NOT WRITTEN BY MYSELF BUT WAS FOUND ONLINE AS A MEASURE TO ENSURE THAT A PROGRAMMATIC ERROR WAS NOT OCCURING IN BOTH JAVA AND PYTHON. 
   
 class evalpostfix: 
     def __init__(self): 
@@ -35,12 +51,7 @@ class evalpostfix:
         return int(self.pop())
 
 
-
-import random
-
-expression_strings = []
-results = []
-
+# Returns the Result of the Given Postfix Expression in a List. THIS METHOD WAS NOT WRITTEN BY MYSELF BUT WAS FOUND ONLINE AS A MEASURE TO ENSURE THAT A PROGRAMMATIC ERROR WAS NOT OCCURING IN BOTH JAVA AND PYTHON.
 def calculate(inputs):
     stack = []
     for a in inputs:
@@ -63,6 +74,10 @@ def calculate(inputs):
 
     return stack.pop()
 
+#EVERYTHING WRITTEN FROM HERE DOWN WAS WRITTEN BY ME
+
+
+#Creates a Valid Expression Using Random Integers and Operations, Except for Expononetials Due to Issues With Arthmatic Overflow Issues, Calls Both Evaluate Methods, Confirms that the Results Match, and Then Appends the Expression and the Result to Local Variables.
 def expression_creator():
     expression = []
     length = random.randint(3, 5)*random.randint(1, 9)
@@ -109,26 +124,32 @@ def expression_creator():
         print("Oops!")
     return answer
 
-
 counter = 0
 
-while(counter < 50):
+# Generate the Specified Number of Test Cases and Prints the Evaluated Result to the Terminal
+while(counter < test_case_count):
     print(expression_creator())
     counter = counter + 1
 
 
 
-formatted_array_literal = "{"
+
+#Format the List Data Into a String Following Java Syntax
+
+formatted_array_literal = "String[] postfix_test_expressions = {"
 for x in expression_strings:
     formatted_array_literal = formatted_array_literal + "\"" + x.strip() + "\"" + ", "
+formatted_array_literal =formatted_array_literal.strip()[:-1] + "};"
 
 
-formatted_results_literal = "{"
+formatted_results_literal = "int[] postfix_test_expressions_answers = {"
 for x in results:
     formatted_results_literal = formatted_results_literal + str(x) + ", "
+formatted_results_literal =formatted_results_literal.strip()[:-1] + " };"
 
-
-
+#Print Results to Terminal
+print("\nCopy and Paste The Following String[] into PostfixCalculatorTest.java\n")
 print(formatted_array_literal)
 
+print("\nCopy and Paste The Following int[] into PostfixCalculatorTest.java\n")
 print(formatted_results_literal)
